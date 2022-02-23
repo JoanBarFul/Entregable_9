@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Colliders : MonoBehaviour
 {
     public GameObject exColors;
@@ -36,4 +37,6 @@ public class Colliders : MonoBehaviour
         exColors.SetActive(false);
         exSize.SetActive(false);
     }
+
+    
 }

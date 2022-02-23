@@ -1,28 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_Controller : MonoBehaviour
 {
     private float rotateSpeed = 500;
-    private float turnSpeed = 5;
-    private float verticalInput;
-    private float horizontalInput;
+    private float forwardSpeed = 5;
+    private float turnSpeed = 100;
+    public bool avance = false;
+  
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.position = Persistance_Data.sharedInstance.playerPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.back * Time.deltaTime * rotateSpeed);
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * forwardSpeed);
+            avance = true;
+        }
+        else { avance = false; }
 
-        verticalInput = Input.GetAxis("Vertical");
-        horizontalInput = Input.GetAxis("Horizontal");
+        if (Input.GetKey(KeyCode.A))
+        { transform.Rotate(Vector3.down * Time.deltaTime * turnSpeed); }
+        
+        if (Input.GetKey(KeyCode.D))
+        { transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed); }
 
-        transform.Translate(Vector3.up * Time.deltaTime * turnSpeed * horizontalInput);
-        transform.Rotate(Vector3.back * Time.deltaTime * turnSpeed * verticalInput);
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //Persistance_Data.sharedInstance.playerRotation = transform.position;
+            
+            Persistance_Data.sharedInstance.playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            SceneManager.LoadScene("Entregable_9_2");
+        }
     }
 }

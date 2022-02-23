@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Entregable_8.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Entregable_9_1.unity
+    guid: c4987aec3c1f53746be27bc2607c770f
+  - enabled: 1
+    path: Assets/Scenes/Entregable_9_2.unity
+    guid: e5f024de89d58e04e9779d66897eac6d
   m_configObjects: {}
