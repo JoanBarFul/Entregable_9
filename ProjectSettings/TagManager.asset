@@ -7,6 +7,7 @@ TagManager:
   - ButtonCollider
   - SliderCollider
   - BackCollider
+  - Pelota
   layers:
   - Default
   - TransparentFX

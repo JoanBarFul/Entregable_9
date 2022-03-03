@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player_Controller : MonoBehaviour
 {
-    private float rotateSpeed = 500;
-    private float forwardSpeed = 5;
-    private float turnSpeed = 100;
+    private float rotateSpeed = 500f;
+    private float forwardSpeed = 5f;
+    private float turnSpeed = 100f;
     public bool avance = false;
-  
+    private float limZ = 24.5f;
+    private float negLimZ = 0.5f;
+    private float limX = 24.5f;
+    private float negLimX = 0.5f;
+    public Material verdeMat;
+    public Material azulMat;
+    public Material rojoMat;
+    public GameObject bola;
+    
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +44,41 @@ public class Player_Controller : MonoBehaviour
         { transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed); }
 
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if( transform.position.z >= limZ)
+        { transform.position = new Vector3(transform.position.x, transform.position.y, limZ); }
+
+        if (transform.position.z <= negLimZ)
+        { transform.position = new Vector3(transform.position.x, transform.position.y, negLimZ); }
+
+        if (transform.position.x <= negLimX)
+        { transform.position = new Vector3(negLimX, transform.position.y, transform.position.z); }
+
+        if (transform.position.x >= limX)
+        { transform.position = new Vector3(limX, transform.position.y, transform.position.z); }
+
+        if (Persistance_Data.sharedInstance.verdeMaterial == true)
+        { bola.GetComponent<Renderer>().material = verdeMat; }
+
+        if (Persistance_Data.sharedInstance.azulMaterial == true)
+        { bola.GetComponent<Renderer>().material = azulMat; }
+
+        if (Persistance_Data.sharedInstance.rojoMaterial == true)
+        { bola.GetComponent<Renderer>().material = rojoMat; }
+
+        
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            //Persistance_Data.sharedInstance.playerRotation = transform.position;
-            
             Persistance_Data.sharedInstance.playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            SceneManager.LoadScene("Entregable_9_1");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Persistance_Data.sharedInstance.playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Persistance_Data.sharedInstance.intentosTotalesNum ++;
+            Persistance_Data.sharedInstance.intentosNum ++;
+            PlayerPrefs.SetInt("Save", Persistance_Data.sharedInstance.intentosTotalesNum);
             SceneManager.LoadScene("Entregable_9_2");
         }
     }

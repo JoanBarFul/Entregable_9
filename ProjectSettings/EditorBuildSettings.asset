@@ -10,8 +10,8 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Entregable_9_1.unity
-    guid: c4987aec3c1f53746be27bc2607c770f
+    guid: 8b11d91ab5f3f9c4cb2baa060db3b3e6
   - enabled: 1
     path: Assets/Scenes/Entregable_9_2.unity
-    guid: e5f024de89d58e04e9779d66897eac6d
+    guid: c4987aec3c1f53746be27bc2607c770f
   m_configObjects: {}

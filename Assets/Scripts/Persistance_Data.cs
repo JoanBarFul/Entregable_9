@@ -1,27 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
+
 
 public class Persistance_Data : MonoBehaviour
 {
     public static Persistance_Data sharedInstance;
     public Vector3 playerPosition = new Vector3(13f, 0.35f, 13f);
     public Vector3 playerRotation;
+    public bool verdeMaterial;
+    public bool azulMaterial;
+    public bool rojoMaterial;
+    public int intentosNum = 0;
+    public int intentosContador;
+    public int intentosTotalesNum = 0;
+    
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        intentosTotalesNum = PlayerPrefs.GetInt("Save");
+        intentosContador = intentosTotalesNum;
     }
+
+    
+
     void Awake()
+{
+    if (sharedInstance == null)
     {
-        if (sharedInstance == null)
-        {
-            sharedInstance = this;
-            DontDestroyOnLoad(this);
-        }
-
-        else { Destroy(gameObject); }
+        sharedInstance = this;
+        DontDestroyOnLoad(this);
     }
+
+    else { Destroy(gameObject); }
 }
+}
+   
+
+   
