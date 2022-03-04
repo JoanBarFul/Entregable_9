@@ -14,7 +14,7 @@ public class Game_Manager : MonoBehaviour
 
    void Start()
     {
-        
+        //Asigna una función a cada función, cada una de estas cambia el material al "player"
         verdeBTN.onClick.AddListener(TaskOnClick);
         azulBTN.onClick.AddListener(TaskOnClick2);
         rojoBTN.onClick.AddListener(TaskOnClick3);

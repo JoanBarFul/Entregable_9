@@ -20,12 +20,13 @@ public class Persistance_Data : MonoBehaviour
 
     void Start()
     {
+        //Coge lo que está guardado fuera del juego
         intentosTotalesNum = PlayerPrefs.GetInt("Save");
         intentosContador = intentosTotalesNum;
     }
 
     
-
+    //Hace que el archivo no se destruya entre escenas
     void Awake()
 {
     if (sharedInstance == null)

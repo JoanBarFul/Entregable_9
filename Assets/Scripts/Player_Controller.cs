@@ -21,15 +21,16 @@ public class Player_Controller : MonoBehaviour
     
     
 
-    // Start is called before the first frame update
+    
     void Start()
     {
+        //Al cargar la escena el "player" coge la posición de guardada en el "Persistance_Data"
         transform.position = Persistance_Data.sharedInstance.playerPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //Movimiento del "player"
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(Vector3.right * Time.deltaTime * forwardSpeed);
@@ -37,13 +38,14 @@ public class Player_Controller : MonoBehaviour
         }
         else { avance = false; }
 
+        //Rotación del "player"
         if (Input.GetKey(KeyCode.A))
         { transform.Rotate(Vector3.down * Time.deltaTime * turnSpeed); }
         
         if (Input.GetKey(KeyCode.D))
         { transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed); }
 
-
+        //Límites del "player"
         if( transform.position.z >= limZ)
         { transform.position = new Vector3(transform.position.x, transform.position.y, limZ); }
 
@@ -56,6 +58,7 @@ public class Player_Controller : MonoBehaviour
         if (transform.position.x >= limX)
         { transform.position = new Vector3(limX, transform.position.y, transform.position.z); }
 
+        //Asigna el material que se ha elegido en la preimera escena
         if (Persistance_Data.sharedInstance.verdeMaterial == true)
         { bola.GetComponent<Renderer>().material = verdeMat; }
 
@@ -66,19 +69,26 @@ public class Player_Controller : MonoBehaviour
         { bola.GetComponent<Renderer>().material = rojoMat; }
 
         
-
+        //Cambio de escena
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            //Guarda posición del "player"
             Persistance_Data.sharedInstance.playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
             SceneManager.LoadScene("Entregable_9_1");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Persistance_Data.sharedInstance.playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+            //Suma al contador de intentos
             Persistance_Data.sharedInstance.intentosTotalesNum ++;
             Persistance_Data.sharedInstance.intentosNum ++;
+
+            //Guarda fuera del juego los cambios de escena totales
             PlayerPrefs.SetInt("Save", Persistance_Data.sharedInstance.intentosTotalesNum);
+
             SceneManager.LoadScene("Entregable_9_2");
         }
     }

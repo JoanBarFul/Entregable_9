@@ -13,8 +13,7 @@ public class SizeScript : MonoBehaviour
 
     public void ChangeScene()
     {
-        
+        //Cambio de escena
         SceneManager.LoadScene("Entregable_9_1");
-        
     }
 }

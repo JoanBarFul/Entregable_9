@@ -10,6 +10,7 @@ public class Contador : MonoBehaviour
 
     void Start()
     {
+        //Asigna lo que tiene que poner el contador
         cambiosText.text = $"Cambios = {Persistance_Data.sharedInstance.intentosNum}";
         cambiosTotalesText.text = $"Cambios Totales = {Persistance_Data.sharedInstance.intentosContador}";
     }

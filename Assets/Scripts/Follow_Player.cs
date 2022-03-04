@@ -7,7 +7,7 @@ public class Follow_Player : MonoBehaviour
     public GameObject player;
     private Vector3 offset = new Vector3(-3, 0.75f, 0);
 
-     
+     //La cámara sigue al "player"
     void Update()
     { transform.position = player.transform.position + offset; }
 }
